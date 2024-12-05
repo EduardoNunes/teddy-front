@@ -18,6 +18,7 @@ export default {
         size36: "36px",
         size24: "24px",
         size16: "16px",
+        size14: "14px",
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],

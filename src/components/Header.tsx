@@ -4,7 +4,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="relative flex justify-center w-full bg-white shadow-md px-14 py-4">
+    <header className="relative flex justify-center w-full bg-white shadow-md py-4">
       <button
         onClick={() => setIsMenuOpen(!isMenuOpen)}
         className="absolute left-16 top-[30px]"
@@ -15,7 +15,7 @@ export default function Header() {
           className="w-6 h-5"
         />
       </button>
-      <div className="flex items-center justify-between w-[85%]">
+      <div className="flex items-center justify-between w-[80%]">
         <img
           src="/public/images/logo.svg"
           alt="Logo"

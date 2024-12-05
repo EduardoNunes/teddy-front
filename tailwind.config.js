@@ -7,7 +7,7 @@ export default {
       colors: {
         textblack: "rgba(0, 0, 0, 1)",
         textSideBar: "rgba(20, 20, 20, 1)",
-        textwhite: "rgba(255, 255, 255, 1)",
+        fullwhite: "rgba(255, 255, 255, 1)",
         colororange: "rgba(236, 103, 36, 1)",
         colorgray: "rgba(217, 217, 217, 1)",
         colorplaceholder: "rgba(170, 170, 170, 1)",

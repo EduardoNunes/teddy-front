@@ -1,7 +1,7 @@
 export default function SideBar() {
   return (
     <div className="h-full w-[260px] rounded-tr-[16px]">
-      <div className="flex items-center justify-center h-32 w-full bg-colororange rounded-tr-[16px]">
+      <div className="flex items-center justify-center h-32 w-full bg-colorbgopacity rounded-tr-[16px]">
         <img
           src="/public/images/logo.svg"
           alt="Logo"
@@ -41,8 +41,8 @@ export default function SideBar() {
         </div>
       </div>
       <div
-        className="h-[72px] bg-colororange"
-        style={{ boxShadow: "-2px -5px 10px rgba(0, 0, 0, .3)" }}
+        className="h-[72px] bg-fullwhite"
+        style={{ boxShadow: "-2px -5px 10px rgba(0, 0, 0, .1)" }}
       />
     </div>
   );

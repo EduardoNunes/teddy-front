@@ -12,7 +12,7 @@ const Button: React.FC<React.PropsWithChildren<ButtonProps>> = ({
 }) => {
   return (
     <button
-      className="h-[60px] w-full bg-colororange font-inter font-bold text-size24 text-textwhite rounded-[4px]"
+      className="h-[60px] w-full bg-colororange font-inter font-bold text-size24 text-fullwite rounded-[4px]"
       onClick={onClick}
     >
       {text}

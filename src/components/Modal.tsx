@@ -11,7 +11,7 @@ export default function Modal() {
           </h1>
           <button>
             <img
-              src="/public/images/exit.svg"
+              src="/images/exit.svg"
               alt="Ícone de sair"
               className="w-3 h-3"
             />
@@ -39,10 +39,7 @@ export default function Modal() {
           style={{ width: "360px", height: "40px", fontSize: "16px" }}
         />
         <div className="w-full mt-2">
-          <Button
-            text="Criar cliente"
-            type={"type2"}
-          />
+          <Button text="Criar cliente" type={"type2"} />
         </div>
       </div>
       ;

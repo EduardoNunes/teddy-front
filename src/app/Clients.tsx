@@ -8,13 +8,6 @@ export default function Clients() {
   const [clientsPerPage, setClientsPerPage] = useState(16);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const handleClientsPerPageChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    setClientsPerPage(Number(event.target.value));
-    setCurrentPage(1);
-  };
-
   const totalPages = Math.ceil(JsonClients.length / clientsPerPage);
 
   const startIndex = (currentPage - 1) * clientsPerPage;
@@ -22,6 +15,13 @@ export default function Clients() {
     startIndex,
     startIndex + clientsPerPage
   );
+
+  const handleClientsPerPageChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    setClientsPerPage(Number(event.target.value));
+    setCurrentPage(1);
+  };
 
   const goToPage = (page: number) => {
     if (page >= 1 && page <= totalPages) {

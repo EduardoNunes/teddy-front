@@ -10,14 +10,14 @@ export default function Header() {
         className="absolute left-16 top-[30px]"
       >
         <img
-          src="/public/images/hamburger.svg"
+          src="/images/hamburger.svg"
           alt="Logo"
           className="w-6 h-5"
         />
       </button>
       <div className="flex items-center justify-between w-[80%]">
         <img
-          src="/public/images/logo.svg"
+          src="/images/logo.svg"
           alt="Logo"
           className="w-[100px] h-[48.98px]"
         />

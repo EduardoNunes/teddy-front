@@ -3,7 +3,7 @@ export default function SideBar() {
     <div className="h-full w-[260px] rounded-tr-[16px]">
       <div className="flex items-center justify-center h-32 w-full bg-colorbgopacity rounded-tr-[16px]">
         <img
-          src="/public/images/logo.svg"
+          src="/images/logo.svg"
           alt="Logo"
           className="w-[100px] h-[48.98px]"
         />
@@ -11,7 +11,7 @@ export default function SideBar() {
       <div className="flex flex-col h-[calc(100%-200px)] pt-12 pl-6 gap-6">
         <div className="flex items-center gap-3">
           <img
-            src="/public/images/home.svg"
+            src="/images/home.svg"
             alt="Logo"
             className="w-[19.95px] h-[16.67px]"
           />
@@ -21,7 +21,7 @@ export default function SideBar() {
         </div>
         <div className="flex items-center gap-3">
           <img
-            src="/public/images/client.svg"
+            src="/images/client.svg"
             alt="Logo"
             className="w-[19.95px] h-[16.67px]"
           />
@@ -31,7 +31,7 @@ export default function SideBar() {
         </div>
         <div className="flex items-center gap-3">
           <img
-            src="/public/images/product.svg"
+            src="/images/product.svg"
             alt="Logo"
             className="w-[19.95px] h-[16.67px]"
           />

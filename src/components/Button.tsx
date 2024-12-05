@@ -13,12 +13,12 @@ const Button: React.FC<React.PropsWithChildren<ButtonProps>> = ({
   style,
   type,
 }) => {
-  const baseClass = "w-full font-inter font-bold text-fullwhite rounded-[4px]";
+  const baseClass = "w-full font-inter font-bold rounded-[4px]";
   const typeClass =
     type === "type1"
-      ? "bg-colororange h-[60px] text-size24"
+      ? "bg-colororange h-[60px] text-size24 text-fullwhite"
       : type === "type2"
-      ? "bg-colororange h-[40px] text-size14"
+      ? "bg-colororange h-[40px] text-size14 text-fullwhite"
       : type === "type3"
       ? "h-[40px] text-size14 text-colororange border-[2px] border-colororange mt-4"
       : "bg-colororange h-[40px] text-size14";

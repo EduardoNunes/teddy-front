@@ -14,9 +14,9 @@ export default function Card({ name, salary, enterprise }: TypesClients) {
         Empresa: R${formatBrl(enterprise)}
       </span>
       <div className="flex justify-between w-full mt-2">
-        <img src="/public/images/add.svg" alt="Ícone adicionar" />
-        <img src="/public/images/edit.svg" alt="Ícone ditar" />
-        <img src="/public/images/trash.svg" alt="Ícone lixeira" />
+        <img src="/images/add.svg" alt="Ícone adicionar" />
+        <img src="/images/edit.svg" alt="Ícone ditar" />
+        <img src="/images/trash.svg" alt="Ícone lixeira" />
       </div>
     </div>
   );

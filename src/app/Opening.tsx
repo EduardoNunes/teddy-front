@@ -17,7 +17,7 @@ export default function Opening() {
           name="name"
           style={{ width: "100%", height: "60px", fontSize: "24px" }}
         />
-        <Button text="Entrar" style={{ height: "60px", fontSize: "24px" }} />
+        <Button text="Entrar" type={"type1"} />
       </div>
     </div>
   );

@@ -4,16 +4,28 @@ interface ButtonProps {
   text: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   style?: CSSProperties;
+  type: "type1" | "type2" | "type3" | "";
 }
 
 const Button: React.FC<React.PropsWithChildren<ButtonProps>> = ({
   text,
   onClick,
   style,
+  type,
 }) => {
+  const baseClass = "w-full font-inter font-bold text-fullwhite rounded-[4px]";
+  const typeClass =
+    type === "type1"
+      ? "bg-colororange h-[60px] text-size24"
+      : type === "type2"
+      ? "bg-colororange h-[40px] text-size14"
+      : type === "type3"
+      ? "h-[40px] text-size14 text-colororange border-[2px] border-colororange mt-4"
+      : "bg-colororange h-[40px] text-size14";
+
   return (
     <button
-      className="w-full bg-colororange font-inter font-bold text-size24 text-fullwhite rounded-[4px]"
+      className={`${baseClass} ${typeClass}`}
       style={style}
       onClick={onClick}
     >

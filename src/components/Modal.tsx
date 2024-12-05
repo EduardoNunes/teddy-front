@@ -41,7 +41,7 @@ export default function Modal() {
         <div className="w-full mt-2">
           <Button
             text="Criar cliente"
-            style={{ height: "40px", fontSize: "14px" }}
+            type={"type2"}
           />
         </div>
       </div>

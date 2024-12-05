@@ -1,6 +1,7 @@
+import { JsonClients } from "../../public/data/JsonClients.js";
+import Button from "../components/Button.js";
 import Card from "../components/Card.js";
 import Header from "../components/Header.js";
-import { JsonClients } from "../../public/data/JsonClients.js";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
             />
           ))}
         </div>
+        <Button text="Criar cliente" type={"type3"} />
       </div>
     </div>
   );

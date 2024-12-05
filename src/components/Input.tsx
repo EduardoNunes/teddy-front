@@ -8,7 +8,6 @@ interface InputProps {
   name: string;
   disabled?: boolean;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-  className: string;
   style?: CSSProperties;
 }
 
@@ -31,7 +30,7 @@ const Input: React.FC<InputProps> = ({
         name={name}
         onChange={onChange}
         style={style}
-        className="w-full h-[60px] border-[2px] border-colorgray rounded-[4px] font-inter text-size24 text-colorplaceholder px-4 bg-colorbackground"
+        className="w-full border-[2px] border-colorgray rounded-[4px] font-inter text-textblack placeholder-colorplaceholder px-4 bg-colorbgopacity"
       />
     </>
   );

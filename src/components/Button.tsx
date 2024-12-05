@@ -1,18 +1,20 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 
 interface ButtonProps {
   text: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  style?: string;
+  style?: CSSProperties;
 }
 
 const Button: React.FC<React.PropsWithChildren<ButtonProps>> = ({
   text,
   onClick,
+  style,
 }) => {
   return (
     <button
-      className="h-[60px] w-full bg-colororange font-inter font-bold text-size24 text-fullwite rounded-[4px]"
+      className="w-full bg-colororange font-inter font-bold text-size24 text-fullwhite rounded-[4px]"
+      style={style}
       onClick={onClick}
     >
       {text}

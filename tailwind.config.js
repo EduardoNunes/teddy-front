@@ -13,6 +13,7 @@ export default {
         colorplaceholder: "rgba(170, 170, 170, 1)",
         colorbackground: "rgba(245, 245, 245, 1)",
         colorbgopacity: "rgba(255, 255, 255, 0.06)",
+        colorbgmodal: "rgba(0, 0, 0, 0.2)",
       },
       fontSize: {
         size36: "36px",

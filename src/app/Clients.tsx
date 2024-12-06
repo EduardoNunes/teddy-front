@@ -3,8 +3,11 @@ import { JsonClients } from "../../public/data/JsonClients.js";
 import Button from "../components/Button.js";
 import Card from "../components/Card.js";
 import Header from "../components/Header.js";
+import { useGlobalContext } from "../context/globalContext.js";
+import Modal from "../components/Modal.js";
 
 export default function Clients() {
+  const { isOpenModal, setIsOpenModal, setIsCreateUser } = useGlobalContext();
   const [clientsPerPage, setClientsPerPage] = useState(16);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -29,8 +32,14 @@ export default function Clients() {
     }
   };
 
+  const handleCreateClient = () => {
+    setIsOpenModal(true);
+    setIsCreateUser(true);
+  };
+
   return (
     <div className="flex flex-col items-center w-[100vw] h-[100vh] bg-colorbackground">
+      {isOpenModal && <Modal />}
       <Header />
       <div className="w-[80%]">
         <div className="flex justify-between w-full mt-6 mb-2">
@@ -63,7 +72,11 @@ export default function Clients() {
           ))}
         </div>
 
-        <Button text="Criar cliente" type="type3" />
+        <Button
+          text="Criar cliente"
+          type="type3"
+          onClick={handleCreateClient}
+        />
         <div className="flex justify-center w-full">
           <div className="mt-4 flex justify-between w-[250px]">
             <button

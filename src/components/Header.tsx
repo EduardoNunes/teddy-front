@@ -1,19 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
+import SideBar from "./SideBar";
+import { useGlobalContext } from "../context/globalContext";
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isOpenMenu, setIsOpenMenu } = useGlobalContext();
+  const [userName, setUserName] = useState("");
+
+  useEffect(() => {
+    const user = Cookies.get("userName");
+    setUserName(user || "");
+  }, []);
 
   return (
     <header className="relative flex justify-center w-full bg-white shadow-md py-4">
+      {isOpenMenu && <SideBar />}
       <button
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        onClick={() => setIsOpenMenu(!isOpenMenu)}
         className="absolute left-16 top-[30px]"
       >
-        <img
-          src="/images/hamburger.svg"
-          alt="Logo"
-          className="w-6 h-5"
-        />
+        <img src="/images/hamburger.svg" alt="Logo" className="w-6 h-5" />
       </button>
       <div className="flex items-center justify-between w-[80%]">
         <img
@@ -43,7 +49,7 @@ export default function Header() {
         </div>
         <div className="font-inter font-normal text-size16 text-textblack">
           <span>
-            Olá, <strong>Usuário!</strong>
+            Olá, <strong>{userName}!</strong>
           </span>
         </div>
       </div>

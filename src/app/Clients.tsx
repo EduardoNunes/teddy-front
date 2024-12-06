@@ -1,23 +1,30 @@
-import { useState } from "react";
-import { JsonClients } from "../../public/data/JsonClients.js";
+import { useEffect, useState } from "react";
 import Button from "../components/Button.js";
 import Card from "../components/Card.js";
 import Header from "../components/Header.js";
 import { useGlobalContext } from "../context/globalContext.js";
 import Modal from "../components/Modal.js";
+import Toasty from "../components/Toasty.js";
+import { TypesClients } from "../types/typesClients.js";
 
 export default function Clients() {
-  const { isOpenModal, setIsOpenModal, setIsCreateUser } = useGlobalContext();
+  const {
+    isOpenModal,
+    setIsOpenModal,
+    setIsCreateUser,
+    isToasty,
+    messageToasty,
+    findClientsReq,
+    allClients,
+  } = useGlobalContext();
   const [clientsPerPage, setClientsPerPage] = useState(16);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const totalPages = Math.ceil(JsonClients.length / clientsPerPage);
+  const totalPages = Math.ceil(allClients.total / clientsPerPage);
 
-  const startIndex = (currentPage - 1) * clientsPerPage;
-  const currentClients = JsonClients.slice(
-    startIndex,
-    startIndex + clientsPerPage
-  );
+  useEffect(() => {
+    findClientsReq(currentPage, clientsPerPage);
+  }, [currentPage, clientsPerPage]);
 
   const handleClientsPerPageChange = (
     event: React.ChangeEvent<HTMLSelectElement>
@@ -40,11 +47,12 @@ export default function Clients() {
   return (
     <div className="flex flex-col items-center w-[100vw] h-[100vh] bg-colorbackground">
       {isOpenModal && <Modal />}
+      {isToasty && <Toasty text={messageToasty} />}
       <Header />
       <div className="w-[80%]">
         <div className="flex justify-between w-full mt-6 mb-2">
           <span>
-            <strong>{JsonClients.length} </strong>clientes encontrados
+            <strong>{allClients.total} </strong>clientes encontrados
           </span>
           <div className="flex gap-2">
             <span>Clientes por página:</span>
@@ -62,7 +70,7 @@ export default function Clients() {
         </div>
 
         <div className="flex flex-wrap gap-4 justify-between h-[65vh] overflow-y-auto">
-          {currentClients.map((client, index: number) => (
+          {allClients.data.map((client: TypesClients, index: number) => (
             <Card
               key={index}
               name={client.name}

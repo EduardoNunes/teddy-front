@@ -5,10 +5,18 @@ import { useGlobalContext } from "../context/globalContext";
 import formatBrl from "../utils/formatBrl";
 
 export default function Modal() {
-  const { isCreateUser, setIsOpenModal, createClientReq } = useGlobalContext();
+  const {
+    isCreateUser,
+    setIsOpenModal,
+    createClientReq,
+    setMessageToasty,
+    setIsToasty,
+    editClientReq,
+    findClientsReq,
+  } = useGlobalContext();
   const [name, setName] = useState("");
-  const [salary, setSalary] = useState("");
-  const [enterprise, setEnterprise] = useState("");
+  const [salaryInput, setSalaryInput] = useState("");
+  const [enterpriseInput, setEnterpriseInput] = useState("");
 
   const handleChangeCurrency = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -22,10 +30,38 @@ export default function Modal() {
     setter(formattedValue);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    const salary = Number(
+      salaryInput.replace("R$", "").replace(/\./g, "").replace(",", "")
+    );
+
+    const enterprise = Number(
+      enterpriseInput.replace("R$", "").replace(/\./g, "").replace(",", "")
+    );
+
+    const form = { name, salary, enterprise };
+
     if (isCreateUser) {
-      const form = { name, salary, enterprise };
-      createClientReq(form);
+      const response = createClientReq(form);
+
+      if ((await response) === "Usuário criado com sucesso!") {
+        findClientsReq(1, 16)
+        setMessageToasty("Usuário criado com sucesso!");
+        setIsToasty(true);
+        setName("");
+        setSalaryInput("");
+        setEnterpriseInput("");
+      }
+    } else {
+/*       const response = editClientReq(id, form);
+
+      if ((await response) === "Usuário criado com sucesso!") {
+        setMessageToasty("Usuário criado com sucesso!");
+        setIsToasty(true);
+        setName("");
+        setSalaryInput("");
+        setEnterpriseInput("");
+      } */
     }
   };
 
@@ -58,18 +94,18 @@ export default function Modal() {
           type="text"
           id="name"
           name="name"
-          value={salary}
+          value={salaryInput}
           style={{ width: "360px", height: "40px", fontSize: "16px" }}
-          onChange={(e) => handleChangeCurrency(e, setSalary)}
+          onChange={(e) => handleChangeCurrency(e, setSalaryInput)}
         />
         <Input
           placeholder="Digite o valor da empresa:"
           type="text"
           id="name"
           name="name"
-          value={enterprise}
+          value={enterpriseInput}
           style={{ width: "360px", height: "40px", fontSize: "16px" }}
-          onChange={(e) => handleChangeCurrency(e, setEnterprise)}
+          onChange={(e) => handleChangeCurrency(e, setEnterpriseInput)}
         />
         <div className="w-full mt-2">
           <Button

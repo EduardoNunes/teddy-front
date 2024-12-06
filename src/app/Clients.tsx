@@ -6,6 +6,7 @@ import { useGlobalContext } from "../context/globalContext.js";
 import Modal from "../components/Modal.js";
 import Toasty from "../components/Toasty.js";
 import { TypesClients } from "../types/typesClients.js";
+import ModalDelete from "../components/ModalDelete.js";
 
 export default function Clients() {
   const {
@@ -16,6 +17,7 @@ export default function Clients() {
     messageToasty,
     findClientsReq,
     allClients,
+    isOpenDelete,
   } = useGlobalContext();
   const [clientsPerPage, setClientsPerPage] = useState(16);
   const [currentPage, setCurrentPage] = useState(1);
@@ -47,6 +49,7 @@ export default function Clients() {
   return (
     <div className="flex flex-col items-center w-[100vw] h-[100vh] bg-colorbackground">
       {isOpenModal && <Modal />}
+      {isOpenDelete && <ModalDelete />}
       {isToasty && <Toasty text={messageToasty} />}
       <Header />
       <div className="w-[80%]">
@@ -72,6 +75,7 @@ export default function Clients() {
         <div className="flex flex-wrap gap-4 justify-between h-[65vh] overflow-y-auto">
           {allClients.data.map((client: TypesClients, index: number) => (
             <Card
+              id={client.id}
               key={index}
               name={client.name}
               salary={client.salary}

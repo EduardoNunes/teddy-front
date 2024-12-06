@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "./Button";
 import Input from "./Input";
 import { useGlobalContext } from "../context/globalContext";
@@ -13,10 +13,19 @@ export default function Modal() {
     setIsToasty,
     editClientReq,
     findClientsReq,
+    selectedClient,
+    selectedClientData,
   } = useGlobalContext();
   const [name, setName] = useState("");
   const [salaryInput, setSalaryInput] = useState("");
   const [enterpriseInput, setEnterpriseInput] = useState("");
+
+  useEffect(() => {
+    console.log(selectedClientData);
+    setName(selectedClientData.name);
+    setSalaryInput(formatBrl(selectedClientData.salary));
+    setEnterpriseInput(formatBrl(selectedClientData.enterprise));
+  }, []);
 
   const handleChangeCurrency = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -44,24 +53,24 @@ export default function Modal() {
     if (isCreateUser) {
       const response = createClientReq(form);
 
-      if ((await response) === "Usuário criado com sucesso!") {
-        findClientsReq(1, 16)
-        setMessageToasty("Usuário criado com sucesso!");
+      if ((await response) === "Cliente criado com sucesso!") {
+        findClientsReq(1, 16);
+        setMessageToasty("Cliente criado com sucesso!");
         setIsToasty(true);
         setName("");
         setSalaryInput("");
         setEnterpriseInput("");
       }
     } else {
-/*       const response = editClientReq(id, form);
+      const response = editClientReq(selectedClient, form);
 
-      if ((await response) === "Usuário criado com sucesso!") {
-        setMessageToasty("Usuário criado com sucesso!");
+      if ((await response) === "Cliente editado com sucesso!") {
+        setMessageToasty("Cliente editado com sucesso!");
         setIsToasty(true);
         setName("");
         setSalaryInput("");
         setEnterpriseInput("");
-      } */
+      }
     }
   };
 

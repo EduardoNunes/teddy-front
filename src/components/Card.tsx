@@ -2,15 +2,32 @@ import { useGlobalContext } from "../context/globalContext";
 import { TypesClients } from "../types/typesClients";
 import formatBrl from "../utils/formatBrl";
 
-export default function Card({ name, salary, enterprise }: TypesClients) {
-  const { setIsOpenModal, setIsCreateUser } = useGlobalContext();
+export default function Card({ id, name, salary, enterprise }: TypesClients) {
+  const {
+    setIsOpenModal,
+    setIsCreateUser,
+    setSelectedClient,
+    setSelectedClientData,
+    setIsOpenDelete,
+  } = useGlobalContext();
 
   const handleClick = (clicked: string) => {
     if (clicked === "add") {
+      
     } else if (clicked === "edit") {
+      const client = { name, salary, enterprise };
+
+      setSelectedClient(id);
       setIsOpenModal(true);
       setIsCreateUser(false);
+      setSelectedClientData(client);
+
     } else if (clicked === "delete") {
+      const client = { name, salary, enterprise };
+
+      setIsOpenDelete(true);
+      setSelectedClient(id);
+      setSelectedClientData(client);
     }
   };
 

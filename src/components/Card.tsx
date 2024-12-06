@@ -9,11 +9,18 @@ export default function Card({ id, name, salary, enterprise }: TypesClients) {
     setSelectedClient,
     setSelectedClientData,
     setIsOpenDelete,
+    addSelectedClientReq,
+    setMessageToasty,
+    setIsToasty,
   } = useGlobalContext();
 
-  const handleClick = (clicked: string) => {
+  const handleClick = async (clicked: string) => {
     if (clicked === "add") {
-      
+      const response = addSelectedClientReq(id);
+      if ((await response) === "Cliente selecionado com sucesso!") {
+        setMessageToasty("Cliente selecionado com sucesso!");
+        setIsToasty(true);
+      }
     } else if (clicked === "edit") {
       const client = { name, salary, enterprise };
 
@@ -21,7 +28,6 @@ export default function Card({ id, name, salary, enterprise }: TypesClients) {
       setIsOpenModal(true);
       setIsCreateUser(false);
       setSelectedClientData(client);
-
     } else if (clicked === "delete") {
       const client = { name, salary, enterprise };
 

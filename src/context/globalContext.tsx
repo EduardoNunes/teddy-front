@@ -34,7 +34,8 @@ interface GlobalContextType {
   allSavedClients: Client[];
   setAllSavedClients: React.Dispatch<React.SetStateAction<Client[]>>;
   findAllSavedClientsReq: () => Promise<ClientsData | unknown>;
-  deleteSavedClientReq: (id: number) => Promise<string | unknown>; 
+  deleteSavedClientReq: (id: number) => Promise<string | unknown>;
+  addSelectedClientReq: (clientId: string) => Promise<string | unknown>;
 }
 
 const GlobalContext = createContext<GlobalContextType | null>(null);
@@ -144,6 +145,20 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
     }
   };
 
+  const addSelectedClientReq = async (
+    clientId: string
+  ): Promise<string | unknown> => {
+    console.log(clientId);
+    try {
+      await api.post("/saved-clients/add", { clientId });
+
+      return "Cliente selecionado com sucesso!";
+    } catch (error: unknown) {
+      console.log(error);
+      return error;
+    }
+  };
+
   const contextValue: GlobalContextType = {
     isOpenMenu,
     setIsOpenMenu,
@@ -170,7 +185,8 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
     allSavedClients,
     setAllSavedClients,
     findAllSavedClientsReq,
-    deleteSavedClientReq
+    deleteSavedClientReq,
+    addSelectedClientReq,
   };
 
   return (
